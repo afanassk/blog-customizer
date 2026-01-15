@@ -5,6 +5,7 @@ import { Select } from 'src/ui/select';
 import { RadioGroup } from 'src/ui/radio-group';
 import { Separator } from 'src/ui/separator';
 import { Button } from 'src/ui/button';
+import { useClose } from 'src/hooks/useClose';
 
 import {
 	ArticleStateType,
@@ -28,7 +29,6 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 	const { appliedState, onApply, onReset } = props;
 
 	const [isOpen, setIsOpen] = useState(false);
-
 	const [formState, setFormState] = useState<ArticleStateType>(appliedState);
 
 	useEffect(() => {
@@ -41,23 +41,13 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 		setIsOpen((prev) => !prev);
 	};
 
-	useEffect(() => {
-		if (!isOpen) return;
+	const closeMenu = () => setIsOpen(false);
 
-		const handleOutsideClick = (event: MouseEvent) => {
-			const target = event.target as Node;
-
-			if (asideRef.current && !asideRef.current.contains(target)) {
-				setIsOpen(false);
-			}
-		};
-
-		document.addEventListener('mousedown', handleOutsideClick);
-
-		return () => {
-			document.removeEventListener('mousedown', handleOutsideClick);
-		};
-	}, [isOpen]);
+	useClose({
+		isOpenElement: isOpen,
+		onClose: closeMenu,
+		elementRef: asideRef,
+	});
 
 	const updateFormState = <K extends keyof ArticleStateType>(
 		key: K,
@@ -69,6 +59,7 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 	const handleSubmit = (event: React.FormEvent) => {
 		event.preventDefault();
 		onApply(formState);
+		closeMenu();
 	};
 
 	const handleReset = () => {
