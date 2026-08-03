@@ -1,6 +1,6 @@
 # 🏷️ Проект «Blog Customizer» (Кастомизатор блога)
 
-Учебный фронтенд-проект, выполненный в рамках курса «Фронтенд-разработчик» от Яндекс Практикума (модуль «React и TypeScript»).
+Учебный фронтенд-проект, выполненный в рамках курса «Фронтенд-разработчик» от Яндекс Практикума.
 
 [![Открыть проект](https://img.shields.io/badge/Netlify-Открыть_проект-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://afanassk-blog-customizer.netlify.app/) [![Открыть макет](https://img.shields.io/badge/Figma-Открыть_макет-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/FEeiiGLOsE7ktXbPpBxYoD/Custom-dropdown?node-id=0-1&p=f&t=7BKo21TGoRj8QUSq-0)
 
